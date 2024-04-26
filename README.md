@@ -22,6 +22,7 @@ Affiliations:
 
 - [Eurographics Digital Library](https://diglib.eg.org/handle/10.1111/cgf15027)
 - [Preprint PDF (31.62MB)](Fabrics5k_eg_CRC.pdf)
+- [Video [Youtube]](https://youtu.be/EJ5tjclYSZ8)
 
 ## Results
 
