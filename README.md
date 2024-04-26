@@ -2,6 +2,8 @@
 
 ## Abstract
 
+![Teaser](teaser3.png)
+
 In recent years, the fashion apparel industry has been increasingly employing virtual simulations for the development of new products. The first step in virtual garment simulation involves identifying the optimal simulation parameters that accurately reproduce the drape properties of the actual fabric. Recent techniques advocate for a data-driven approach, estimating parameters from outcomes of a Cusick drape test. Such methods deviate from standard Cusick drape tests, introducing high-cost tools, which reduces practicality. Our research presents a more practical model, utilizing 2D silhouette images from the ISO-standardized Cusick drape test. Notably, while past models have shown limitations in estimating stretching parameters, our novel approach leverages the fabric’s tag information including fabric type and fiber composition. Our proposed model functions as a cascaded system: first, it estimates stretching parameters using tag information, then, in the subsequent step, it considers the estimated stretching parameters alongside the fabric sample’s Cusick drape test results to determine bending parameters. We validated our model against existing methods and applied it in practical scenarios, showing promising outcomes.
 
 ## Authors
