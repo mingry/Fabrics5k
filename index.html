@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+
+    <!--  font-family: "Montserrat", sans-serif; -->
+
+<head>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Estimating Cloth Simulation Parameters From Tag Information and
+ Cusick Drape Test</title>
+    <!-- <link href="css/style.css" rel="stylesheet" type="text/css"> -->
+    <script type="text/javascript" src="javascript/scroll.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&display=swap" rel="stylesheet">
+<link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+
+</head>
+`
+
+<style>
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, dd, dl, dt, li, ol, ul, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-weight: inherit;
+    font-style: inherit;
+    font-size: 100%;
+    line-height: 1.5;
+    font-family: inherit;
+    text-align: left;
+    vertical-align: baseline;
+}
+
+a img, :link img, :visited img {
+    border: 0
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0
+}
+
+ul {
+    list-style: none
+}
+
+q:before, q:after, blockquote:before, blockquote:after {
+    content: ""
+}
+
+
+
+@font-face {
+    font-family: "poppins", sans-serif;
+}
+
+@font-face {
+    font-family: "poppins", sans-serif;
+}
+
+@font-face {
+    font-family: "poppins", sans-serif;
+}
+
+body {
+    font-size: 18px;
+    font-family: "poppins", Helvetica, sans-serif;
+    color: #1e2834
+}
+
+h1 {
+    font-size: 30px;
+    margin-top: 40px;
+    color: #11161e
+}
+
+h1 a {
+    color: #11161e
+}
+
+p {
+    margin: 15px 0;
+    line-height: 1.5em;
+    text-align: justify
+}
+
+a {
+    color: #898B8E;
+    text-decoration: none
+}
+
+a:hover {
+    padding-bottom: 1px;
+    color: #898B8E;
+    border-bottom: 1px solid #898B8E
+}
+
+a.nounderline:hover {
+    color: #898B8E;
+    border-bottom: none
+}
+
+a.underline {
+    padding-bottom: 1px;
+    border-bottom: 1px solid #898B8E
+}
+
+a.underline:hover {
+    padding-bottom: 1px;
+    border-bottom: 1px solid #898B8E
+}
+
+ul {
+    margin: 10px 0;
+    margin-left: 25px;
+    list-style-type: disc
+}
+
+li {
+    margin: 10px 0;
+    text-align: justify
+}
+
+#cover {
+    float: right;
+    margin: 20px 0 5px 30px
+}
+
+#wrapper {
+    width: 1100px;
+    margin: 0 auto;
+    padding-top: 40px;
+    margin-bottom: 80px
+}
+
+#title {
+    color: #563821;
+    font-size: 42px;
+    text-align: center;
+    margin-top: 30px;
+}
+
+#journal {
+    font-size: 25px;
+    text-align: center;
+    font-style: italic;
+    margin-top: 32px
+}
+
+#teaser {
+    margin-top: 40px
+}
+
+#authors {
+    width: 100%;
+    margin-top: 30px
+}
+
+#authors tr {
+    height: 30px
+}
+
+#authors tr.mail {
+    height: 35px
+}
+
+#authors td {
+    text-align: center
+}
+
+#authors #affiliation {
+    font-size: 14px;
+    padding-top: 10px
+}
+
+#authors #affiliation span {
+    margin-left: 20px
+}
+
+#navigation {
+    font-size: 20px;
+    text-align: center;
+    text-transform: uppercase;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px
+}
+
+#navigation td {
+    padding: 15px;
+    padding-bottom: 0px
+}
+
+#bibtexsec {
+    font-family: "Courier", monospace;
+    white-space: pre;
+    font-size: 15px;
+    background-color: #f3f3f3;
+    padding: 20px;
+    overflow: scroll;
+    margin: 20px 0
+}
+
+.super {
+    vertical-align: super;
+    font-size: 70%
+}
+
+.bold {
+    /* font-family: "Montserrat", Helvetica, sans-serif; */
+    font-family: "poppins", Helveltica, sans-serif;
+    font-weight: bold
+}
+
+.italic, #journal {
+    /* font-family: "Montserrat", Helvetica, sans-serif; */
+    font-family: "poppins"
+    font-style: italic
+}
+
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  width: 100%;
+  margin: 15px 10
+}
+
+.center_medium {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  width: 75%;
+  margin: 15px 10
+}
+.center_smaller {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  width: 50%;
+  margin: 15px 10
+}
+video {
+  width: 24%;
+  float: center;
+  margin-top: -2px;
+  margin-bottom: -2px;
+}
+
+div#journal {}
+
+</style>
+
+<body>
+    <a id="top"></a>
+    <div id="wrapper">
+        <div id="header">
+            <div id="journal">Eurographics 2024</div>
+            <div id="title"><b>Estimating Cloth Simulation Parameters <br> From Tag Information and
+ Cusick Drape Test</b><br>
+            </div>
+
+            <!--
+                EunjungJu1 Kwang-yunKim1
+ Gyoo-ChulKang1
+ SungjinYoon1
+ PhilSikChang1
+ EungjuneShim1
+ MyungGeolChoi2†
+ 1CLO Virtual Fashion Inc., South Korea
+ 2The Catholic University of Korea, South Korea
+            -->
+            <table id="authors">
+                <tbody>
+                    <tr>
+                        <td>Eunjung Ju<span class="super">1</span> </td>
+                        <td>Kwang-yun Kim<span class="super">1</span> </td>
+                        <td>Gyoo-Chul Kang<span class="super">1</span> </td>
+                        <td>Sungjin Yoon<span class="super">1</span> </td>
+                        <td>Phil Sik Chang<span class="super">1</span> </td>
+                        <td>Eungjune Shim<span class="super">1</span> </td>
+                        <td>Myung Geol Choi<span class="super">2</span></td>
+                    </tr>
+                    <tr>
+                        <td colspan="7" id="affiliation">
+                            <span class="super">1</span> CLO Virtual Fashion Inc., South Korea
+                            <span class="super">2</span> The Catholic University of Korea, South Korea
+
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+
+            <a href="teaser3.png"
+                class="nounderline"><img style="width:1100px" class="center"
+                    src="teaser3.png" alt="Teaser"
+                    id="teaser"></a>
+
+
+
+            <!-- <table id="navigation">
+                <tbody>
+                    <tr>
+                        <td><a href="#news">News</a>
+                        </td> 
+                        <td><a href="#abstract">Abstract</a>
+                        </td>
+                        <td><a href="#presentation">Presentation</a>
+                        </td>
+                        <td><a href="#results">Results</a>
+                        </td>
+                        <td><a href="#bibtex">Bibtex</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table> -->
+
+
+        </div>
+
+
+        <div id="content">
+
+            <!-- <h1><a id="news">News</a></h1>
+            <ul>
+                <li><span class="italic">February, 2024 </span>: Accepted at <a href="https://eg2024.cyens.org.cy/">Eurographics 2024</a>!</li>
+                <li><span class="italic">February, 2024 </span>: Web launched.</li>
+            </ul> -->
+
+
+            <h1><a id="abstract" href="#top">Abstract</a></h1>
+            <p>
+                In recent years, the fashion apparel industry has been increasingly employing virtual simulations for the development of new
+ products. The first step in virtual garment simulation involves identifying the optimal simulation parameters that accurately re
+produce the drapeproperties of the actual fabric. Recent techniques advocate for a data-driven approach, estimating parameters
+ from outcomes of a Cusick drape test. Such methods deviate from standard Cusick drape tests, introducing high-cost tools, which
+ reduces practicality. Our research presents a more practical model, utilizing 2D silhouette images from the ISO-standardized
+ Cusick drape test. Notably, while past models have shown limitations in estimating stretching parameters, our novel approach
+ leverages the fabric’s tag information including fabric type and fiber composition. Our proposed model functions as a cascaded
+ system: first, it estimates stretching parameters using tag information, then, in the subsequent step, it considers the estimated
+ stretching parameters alongside the fabric sample’s Cusick drape test results to determine bending parameters. We validated
+ our model against existing methods and applied it in practical scenarios, showing promising outcomes.
+
+        <h1><a id="resources" href="#top">Resources</a></h1>
+                <ul>
+                    <li><a target="_blank"
+                            href="https://diglib.eg.org/handle/10.1111/cgf15027">Eurographics Digital Library</a></li>
+                    <li><a target="_blank"
+                            href="Fabrics5k_eg_CRC.pdf">Preprint [PDF, 31.62MB]</a></li>
+                    <!-- <li><a target="_blank"
+                            href="files/paper1152_additional_material.pdf">Supplementary material [PDF, 46.5 MB]</a></li>
+                    <li><a target="_blank"
+                        href="https://drive.google.com/file/d/14JbDQVVwmyX_ckUBrqYI3ll-W2OEsPua/view?usp=sharing">Dataset [ZIP, 674.4 MB]</a></li> -->
+                </ul>
+
+
+
+
+                <h1><a id="results" href="#top">Results</a></h1>
+                <div id="resultssec">
+                    <a href="figure_only_skirt.png"
+                    class="nounderline">
+                    <img style="width:1100px" class="center"
+                        src="figure_only_skirt.png" alt="figure_olny_skirt"
+                        id="results_img">
+                    </a>
+                    <p>  The left image in each pair is a skirt made of actual fabric, and the right image is a skirt simulated with
+ virtual fabric using the simulation parameters estimated by our model.
+                        </p>
+                    </div>
+
+                <h1><a id="bibtex" href="#top">Bibtex</a></h1>
+                <div id="bibtexsec">
+@article {ju2024fabrics5k,
+journal = {Computer Graphics Forum},
+title = {{ Estimating Cloth Simulation Parameters From Tag Information and Cusick Drape Test}},
+author = {Ju, Eunjung and Kim, Kwang-yun and Kang, Gyoo-Chul and Yoon, Sungjin and Chang, Phil Sik and Shim, Eungjune and Choi, Myung Geol},
+year = {2024},
+publisher = {The Eurographics Association and John Wiley & Sons Ltd.},
+ISSN = {1467-8659},
+DOI = {10.1111/cgf.15029}
+}</div>
+
+
+                
+
+                <!-- <h1><a id="acks" href="#top">Acknowledgements</a></h1>
+                <p>
+                    We 
+                </p> -->
+
+
+        </div>
+    </div>
+
+
+</body>
+
+</html>
